@@ -1,13 +1,72 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Alfa Slab One';
+  color: #fffff0;
+  background-color: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Navbar */
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.navbar h1 {
+  color: #f12345
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+
+.navbar a:hover {
+  color: #f12345
+}
+
+/* Content */
+
+.content {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Home */
+
+.home {
+  text-align: center;
+}
+
+.home h1 {
+  font-size: 80px;
+}
+
+/* Movie Link */
+
+.movielink {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.poster img {
+  max-width: 200px;
+  padding: 10px;
+}
+
+.movieinfo {
+  max-width: 400px;
+  padding: 10px;
 }
