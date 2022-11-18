@@ -55,18 +55,18 @@
 
 /* Movie Link */
 
-.movielink {
+.movie-link {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .poster img {
-  max-width: 200px;
+  width: 200px;
   padding: 10px;
 }
 
 .movieinfo {
-  max-width: 400px;
+  width: 400px;
   padding: 10px;
 }
