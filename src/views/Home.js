@@ -1,6 +1,5 @@
 import { useState } from "react"
 import MovieItem from "../components/MovieItem"
-import SearchButton from "../components/ui/SearchButton"
 
 const Home = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -12,12 +11,14 @@ const Home = () => {
   const [year, setYear] = useState("")
 
   const handleSubmit = (e) => {
+    e.preventDefault()
+
     fetch(`${url}s="${title}"&y=${year}&apikey=${API_KEY}`)
       .then((response) => {
         return response.json()
       })
       .then((data) => {
-        console.log(data.Search)
+        //console.log(data.Search)
         setMovies(data.Search)
       })
   }
@@ -25,10 +26,15 @@ const Home = () => {
   return (
     <div className="home">
       <h1>Welcome</h1>
-      <div className="search-form">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Movie Title:</label>
+      <p>
+        Here you can search for movies by entering the whole or a part of the
+        title and optionally the year it was released.
+      </p>
+
+      <form onSubmit={handleSubmit}>
+        <div className="search-form">
+          <div className="search">
+            <label>Title:</label>
             <input
               id={title}
               type="text"
@@ -36,7 +42,7 @@ const Home = () => {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div>
+          <div className="search">
             <label>Year:</label>
             <input
               id={year}
@@ -49,10 +55,14 @@ const Home = () => {
             </select>
             */}
           </div>
-          <SearchButton btnName="Search" />
-        </form>
-      </div>
-      <div>
+          {/* Make it more obvious disabled */}
+          <button id="search-btn" disabled={!title}>
+            Search
+          </button>
+        </div>
+      </form>
+
+      <div className="movie-list">
         {movies.map((movie) => (
           <MovieItem key={movie.imdbID} movie={movie} />
         ))}
