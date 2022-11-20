@@ -4,22 +4,35 @@ import MovieItem from "../components/MovieItem"
 const Home = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
   const url = "https://www.omdbapi.com/?"
-  //'https://www.omdbapi.com/?s="woman"&y=2017&apikey=XXXXXX'
 
   const [movies, setMovies] = useState([])
   const [title, setTitle] = useState("")
   const [year, setYear] = useState("")
+
+  const [isPending, setIsPending] = useState(true)
+  const [error, setError] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     fetch(`${url}s="${title}"&y=${year}&apikey=${API_KEY}`)
       .then((response) => {
+        console.log(response)
+        if (!response.ok) {
+          throw Error("Could not fetch data")
+        }
         return response.json()
       })
       .then((data) => {
         //console.log(data.Search)
         setMovies(data.Search)
+        setIsPending(false)
+        setError(null)
+      })
+      .catch((error) => {
+        //console.log(error.message)
+        setError(error.message)
+        setIsPending(false)
       })
   }
 
@@ -63,9 +76,10 @@ const Home = () => {
       </form>
 
       <div className="movie-list">
-        {movies.map((movie) => (
-          <MovieItem key={movie.imdbID} movie={movie} />
-        ))}
+        {error && <div>{error}</div>}
+        {isPending && <div>Loading...</div>}
+        {movies &&
+          movies.map((movie) => <MovieItem key={movie.imdbID} movie={movie} />)}
       </div>
     </div>
   )

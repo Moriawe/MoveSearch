@@ -94,12 +94,16 @@
   justify-content: center;
 }
 
+.movie-link a:hover {
+  box-shadow: 1px 3px 5 px rgba(0,0,0,0.1);
+}
+
 .poster img {
   width: 200px;
   padding: 10px;
 }
 
-.movieinfo {
+.movie-info {
   width: 400px;
   padding: 10px;
 }
