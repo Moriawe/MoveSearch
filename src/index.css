@@ -94,6 +94,10 @@
   justify-content: center;
 }
 
+.movie-link a {
+  text-decoration: none;
+}
+
 .movie-link a:hover {
   box-shadow: 1px 3px 5 px rgba(0,0,0,0.1);
 }
