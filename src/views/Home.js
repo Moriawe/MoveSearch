@@ -1,12 +1,12 @@
 import { useState } from "react"
+//import useFetch from "../hooks/useFetch"
 import MovieItem from "../components/MovieItem"
 
 const Home = () => {
   const [title, setTitle] = useState("")
   const [year, setYear] = useState("")
 
-  //const { data: movies, isPending, error } = useFetch(title, year)
-
+  //**//  HANDLING THE API FETCH //**//
   const API_KEY = process.env.REACT_APP_API_KEY
   const url = "https://www.omdbapi.com/?"
 
@@ -14,8 +14,12 @@ const Home = () => {
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
 
+  //const [searchCode, setSearchCode] = useState("")
+  //const { data: movies, isPending, error } = useFetch(searchCode)
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    //setSearchCode(`s="${title}"&y=${year}`)
     const endpoint = `${url}s="${title}"&y=${year}&apikey=${API_KEY}`
     setIsPending(true)
 
@@ -40,12 +44,26 @@ const Home = () => {
       })
   }
 
+  /*
+  function generateYearRange() {
+    var years = []
+
+    for (var i = 2022; i >= 1895; i--) {
+      years.push(i)
+    }
+    return years
+  }
+
+  var yearRange = generateYearRange()
+*/
+
   return (
     <div className="home">
       <p>
-        Here you can search for movies by entering the whole or a part of the
-        title and optionally the year it was released.
+        Search by entering the title or part of it. If you want you can also add
+        what year it was released.
       </p>
+      <p>The API returns a maximum of 10 movies.</p>
 
       <form onSubmit={handleSubmit}>
         <div className="search-form flex-box">
@@ -54,24 +72,25 @@ const Home = () => {
             <input
               type="text"
               required
-              id={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div className="search">
             <label>Year:</label>
             <input
-              type="numbers"
-              id={year}
+              id="year"
+              type="text"
               onChange={(e) => setYear(e.target.value)}
             />
-            {/* Scrollable list of years!
-            <select>
-              <option>1900-2022</option>
-            </select>
-            */}
+            {/*
+            <select id={year} onChange={(e) => setYear(e.target.value)}>
+              {yearRange.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select> */}
           </div>
-          {/* Make it more obvious disabled */}
           <button id="search-btn" disabled={!title}>
             Search
           </button>

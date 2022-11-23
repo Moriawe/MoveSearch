@@ -4,7 +4,6 @@ const useFetch = (searchString) => {
   const API_KEY = `&apikey=${process.env.REACT_APP_API_KEY}`
   const url = "https://www.omdbapi.com/?"
   const endpoint = `${url}${searchString}${API_KEY}`
-  //const endpoint = `${url}s="${title}"&y=${year}&apikey=${API_KEY}`
 
   const [data, setData] = useState([])
   const [isPending, setIsPending] = useState(true)
@@ -21,7 +20,7 @@ const useFetch = (searchString) => {
         return response.json()
       })
       .then((data) => {
-        //console.log(data.Search)
+        //console.log(data)
         setData(data)
         setIsPending(false)
         setError(null)
@@ -31,7 +30,7 @@ const useFetch = (searchString) => {
         setError(error.message)
         setIsPending(false)
       })
-  }, [endpoint])
+  }, [searchString, endpoint])
 
   return { data, isPending, error }
 }
