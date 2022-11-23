@@ -21,7 +21,7 @@ const Home = () => {
 
     fetch(endpoint)
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         if (!response.ok) {
           throw Error("We are sorry, it seems we can't fetch the data")
         }
@@ -42,14 +42,13 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Welcome</h1>
       <p>
         Here you can search for movies by entering the whole or a part of the
         title and optionally the year it was released.
       </p>
 
       <form onSubmit={handleSubmit}>
-        <div className="search-form">
+        <div className="search-form flex-box">
           <div className="search">
             <label>Title:</label>
             <input
@@ -79,7 +78,7 @@ const Home = () => {
         </div>
       </form>
 
-      <div className="movie-list">
+      <div className="movie-list flex-box">
         {error && <div>{error}</div>}
         {isPending && <div>Loading...</div>}
         {movies &&

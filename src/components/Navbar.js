@@ -2,11 +2,12 @@ import { Link } from "react-router-dom"
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <h1>Movie App</h1>
+    <nav className="navbar flex-box">
+      <Link to="/">
+        <h1>Movie Search</h1>
+      </Link>
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/information">Information</Link>
+        <Link to="/information">About</Link>
       </div>
     </nav>
   )

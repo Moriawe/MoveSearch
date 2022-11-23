@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 
-const useFetch = (endpoint) => {
-  //const API_KEY = process.env.REACT_APP_API_KEY
-  //const url = "https://www.omdbapi.com/?"
+const useFetch = (searchString) => {
+  const API_KEY = `&apikey=${process.env.REACT_APP_API_KEY}`
+  const url = "https://www.omdbapi.com/?"
+  const endpoint = `${url}${searchString}${API_KEY}`
   //const endpoint = `${url}s="${title}"&y=${year}&apikey=${API_KEY}`
 
   const [data, setData] = useState([])
@@ -10,7 +11,7 @@ const useFetch = (endpoint) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    //console.log("Logging Endpoint from useFetch: " + endpoint)
+    console.log("Logging Endpoint from useFetch: " + endpoint)
     fetch(endpoint)
       .then((response) => {
         //console.log(response)
