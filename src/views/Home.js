@@ -1,58 +1,16 @@
-import { useState, useEffect } from "react"
-//import useFetch from "../hooks/useFetch"
-import MovieItem from "../components/MovieItem"
+import { useState } from "react"
+import MovieList from "../components/MovieList"
 
 const Home = () => {
   const [title, setTitle] = useState("")
   const [year, setYear] = useState("")
-
-  //**//  HANDLING THE API FETCH //**//
-  const API_KEY = process.env.REACT_APP_API_KEY
-  const url = "https://www.omdbapi.com/?"
-
-  const [movies, setMovies] = useState([])
-  const [isPending, setIsPending] = useState(false)
-  const [error, setError] = useState(null)
-
-  //const [searchCode, setSearchCode] = useState("")
-  //const { data: movies, isPending, error } = useFetch(searchCode)
+  const [searchCode, setSearchCode] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //setSearchCode(`s="${title}"&y=${year}`)
-    const endpoint = `${url}s="${title}"&y=${year}&apikey=${API_KEY}`
-    setIsPending(true)
-
-    fetch(endpoint)
-      .then((response) => {
-        //console.log(response)
-        if (!response.ok) {
-          throw Error("We are sorry, it seems we can't fetch the data")
-        }
-        return response.json()
-      })
-      .then((data) => {
-        //console.log(data.Search)
-        setMovies(data.Search)
-        setIsPending(false)
-        setError(null)
-      })
-      .catch((error) => {
-        //console.log(error.message)
-        setError(error.message)
-        setIsPending(false)
-      })
+    setSearchCode(`s="${title}"&y=${year}`)
+    console.log(searchCode)
   }
-
-  useEffect(() => {
-    const data = window.localStorage.getItem("my_movies")
-    if (data !== null) setMovies(JSON.parse(data))
-    console.log(data)
-  }, [])
-
-  useEffect(() => {
-    window.localStorage.setItem("my_movies", JSON.stringify(movies))
-  }, [movies])
 
   /*
   function generateYearRange() {
@@ -106,13 +64,7 @@ const Home = () => {
           </button>
         </div>
       </form>
-
-      <div className="movie-list flex-box">
-        {error && <div>{error}</div>}
-        {isPending && <div>Loading...</div>}
-        {movies &&
-          movies.map((movie) => <MovieItem key={movie.imdbID} movie={movie} />)}
-      </div>
+      {searchCode && <MovieList searchCode={searchCode} />}
     </div>
   )
 }

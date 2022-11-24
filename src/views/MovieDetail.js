@@ -4,7 +4,6 @@ import useFetch from "../hooks/useFetch"
 const Movie = () => {
   const { id } = useParams()
   const searchString = `i=${id}`
-  //console.log("Logging SearchString from MovieDetail component: " + searchString)
   const { data: movie, isPending, error } = useFetch(searchString)
 
   return (
