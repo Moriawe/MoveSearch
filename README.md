@@ -10,7 +10,20 @@ React-router@6
 
 ## List of content:
 
--**Navbar** - Small navigation bar on top where you can go back to mainpage by pressing MovieSearch or reading about the app -**Home** - the main page where you can search for movies -**Movielist** - shows a list of up to 10 movies from the users searchquery when they press the search button. -**Movieitem** - small ui to show a movieposter, title and year in the Movielist -**UseFetch** - a custom hook to fetch data from the API and handle errors.
+-**Navbar**
+Small navigation bar on top where you can go back to mainpage by pressing MovieSearch or reading about the app
+
+-**Home**
+the main page where you can search for movies
+
+-**Movielist**
+shows a list of up to 10 movies from the users searchquery when they press the search button.
+
+-**Movieitem**
+small ui to show a movieposter, title and year in the Movielist
+
+-**UseFetch**
+a custom hook to fetch data from the API and handle errors.
 
 ## Setup
 
