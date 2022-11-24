@@ -15,7 +15,7 @@ const Home = () => {
   /*
   function generateYearRange() {
     var years = []
-
+    years.push("")
     for (var i = 2022; i >= 1895; i--) {
       years.push(i)
     }
