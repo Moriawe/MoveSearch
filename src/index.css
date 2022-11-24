@@ -17,7 +17,8 @@ html {
 
 .media-box {
   margin: auto;
-  width: 1500px;
+  min-width: fit-content;
+  max-width: 1500px;
   min-height: 1000px;
   color: #fffff0;
   background-color: rgba(0, 0, 0, 0.6)
