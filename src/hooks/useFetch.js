@@ -30,7 +30,7 @@ const useFetch = (searchString) => {
         setError(error.message)
         setIsPending(false)
       })
-  }, [searchString, endpoint])
+  }, [endpoint])
 
   return { data, isPending, error }
 }

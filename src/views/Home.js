@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 //import useFetch from "../hooks/useFetch"
 import MovieItem from "../components/MovieItem"
 
@@ -44,6 +44,16 @@ const Home = () => {
       })
   }
 
+  useEffect(() => {
+    const data = window.localStorage.getItem("my_movies")
+    if (data !== null) setMovies(JSON.parse(data))
+    console.log(data)
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem("my_movies", JSON.stringify(movies))
+  }, [movies])
+
   /*
   function generateYearRange() {
     var years = []
@@ -63,7 +73,7 @@ const Home = () => {
         Search by entering the title or part of it. If you want you can also add
         what year it was released.
       </p>
-      <p>The API returns a maximum of 10 movies.</p>
+      <p>The result shows a maximum of 10 movies.</p>
 
       <form onSubmit={handleSubmit}>
         <div className="search-form flex-box">
