@@ -33,6 +33,9 @@ a custom hook to fetch data from the API and handle errors.
 
 ## Setup
 
+Create a file called .env in root folder and add your API key like this:
+REACT_APP_API_KEY="YourKey"
+
 To run it you type **'npm start'** in the folder terminal.
 
 Runs the app in the development mode.\
